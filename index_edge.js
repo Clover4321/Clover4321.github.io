@@ -24,8 +24,8 @@ var symbols = {
          {
             id:'_4_',
             type:'image',
-            rect:['-374px','-552px','1786px','1857px','auto','auto'],
-            fill:["rgba(0,0,0,0)",im+"background.jpg",'-0.18px','0.2px','2020px','2100px']
+            rect:['-128px','-256px','1280px','1280px','auto','auto'],
+            fill:["rgba(0,0,0,0)",im+"bg.png",'-0.18px','0.2px','2020px','2100px']
          },
          {
             id:'Image',
@@ -47,34 +47,34 @@ var symbols = {
       },
    states: {
       "Base State": {
-         "${_Stage}": [
-            ["color", "background-color", 'rgba(255,255,255,1)'],
-            ["style", "overflow", 'hidden'],
-            ["style", "height", '768px'],
-            ["style", "width", '1024px']
-         ],
          "${_card}": [
             ["style", "top", '125px'],
+            ["transform", "scaleX", '1'],
             ["style", "left", '395px'],
-            ["transform", "scaleY", '1'],
-            ["transform", "scaleX", '1']
+            ["transform", "scaleY", '1']
+         ],
+         "${__4_}": [
+            ["style", "top", '-256px'],
+            ["transform", "rotateZ", '0deg'],
+            ["style", "overflow", 'hidden'],
+            ["style", "height", '1280px'],
+            ["style", "background-position", [-0.18,0.2], {valueTemplate:'@@0@@px @@1@@px'} ],
+            ["style", "left", '-128px'],
+            ["style", "width", '1280px']
          ],
          "${_Image}": [
             ["style", "top", '511px'],
             ["style", "overflow", 'hidden'],
             ["style", "height", '257px'],
-            ["style", "background-position", [50,50], {valueTemplate:'@@0@@% @@1@@%'} ],
             ["style", "left", '0px'],
+            ["style", "background-position", [50,50], {valueTemplate:'@@0@@% @@1@@%'} ],
             ["style", "width", '1054px']
          ],
-         "${__4_}": [
-            ["style", "top", '-552px'],
-            ["style", "overflow", 'hidden'],
-            ["transform", "rotateZ", '0deg'],
-            ["style", "height", '1871px'],
-            ["style", "left", '-374px'],
-            ["style", "background-position", [-0.18,0.2], {valueTemplate:'@@0@@px @@1@@px'} ],
-            ["style", "width", '1800px']
+         "${_Stage}": [
+            ["color", "background-color", 'rgba(255,255,255,1)'],
+            ["style", "width", '1024px'],
+            ["style", "height", '768px'],
+            ["style", "overflow", 'hidden']
          ]
       }
    },
@@ -140,7 +140,13 @@ var symbols = {
       id: 'words3',
       transform: [[],[],[],['0','0']],
       type: 'image',
-      fill: ['rgba(0,0,0,0)','images/words.jpg','0px','0px']
+      fill: ['rgba(0,0,0,0)','images/char_bg.jpg','0px','0px']
+   },
+   {
+      id: 'char',
+      type: 'image',
+      rect: ['-392px','-141px','1024px','1448px','auto','auto'],
+      fill: ['rgba(0,0,0,0)','images/char.png','0px','0px']
    }],
    symbolInstances: [
    ]
@@ -148,10 +154,10 @@ var symbols = {
    states: {
       "Base State": {
          "${_words3}": [
-            ["style", "top", '-193px'],
+            ["style", "top", '-141px'],
             ["transform", "scaleY", '0'],
-            ["transform", "scaleX", '0'],
             ["style", "height", '1614px'],
+            ["transform", "scaleX", '0'],
             ["style", "opacity", '0'],
             ["style", "left", '-410px'],
             ["style", "width", '1048px']
@@ -172,11 +178,11 @@ var symbols = {
             ["style", "font-size", '44px'],
             ["style", "top", '115px'],
             ["style", "text-align", 'center'],
-            ["style", "opacity", '1'],
+            ["style", "width", '116px'],
             ["style", "height", '106px'],
-            ["transform", "scaleX", '1'],
             ["transform", "scaleY", '1'],
-            ["style", "width", '116px']
+            ["transform", "scaleX", '1'],
+            ["style", "opacity", '1']
          ],
          "${symbolSelector}": [
             ["style", "height", '441px'],
@@ -190,19 +196,26 @@ var symbols = {
             ["style", "left", '-916px'],
             ["style", "font-size", '0px'],
             ["style", "top", '33px'],
-            ["style", "width", '2071px'],
-            ["transform", "scaleX", '0'],
-            ["subproperty", "textShadow.color", 'rgba(0,0,0,0.65)'],
-            ["style", "font-family", 'Arial Black, Gadget, sans-serif'],
+            ["subproperty", "textShadow.offsetV", '6px'],
             ["style", "opacity", '1'],
-            ["subproperty", "textShadow.offsetV", '6px']
+            ["style", "font-family", 'Arial Black, Gadget, sans-serif'],
+            ["subproperty", "textShadow.color", 'rgba(0,0,0,0.65)'],
+            ["transform", "scaleX", '0'],
+            ["style", "width", '2071px']
+         ],
+         "${_char}": [
+            ["style", "top", '-141px'],
+            ["transform", "scaleY", '0'],
+            ["transform", "scaleX", '0'],
+            ["style", "opacity", '0.000000'],
+            ["style", "left", '-392px']
          ],
          "${_back_end_card3}": [
             ["style", "top", '33px'],
             ["style", "height", '508px'],
-            ["style", "opacity", '1'],
-            ["transform", "scaleX", '0'],
             ["style", "background-size", [0,0], {valueTemplate:'@@0@@% @@1@@%'} ],
+            ["transform", "scaleX", '0'],
+            ["style", "opacity", '1'],
             ["style", "left", '-69px'],
             ["style", "width", '401px']
          ]
@@ -215,20 +228,18 @@ var symbols = {
          duration: 5000,
          autoPlay: false,
          timeline: [
-            { id: "eid58", tween: [ "style", "${_back_end_card3}", "left", '-69px', { fromValue: '-69px'}], position: 1250, duration: 0, easing: "easeInQuad" },
+            { id: "eid60", tween: [ "style", "${_back_end_card3}", "top", '33px', { fromValue: '33px'}], position: 1250, duration: 0, easing: "easeInQuad" },
+            { id: "eid42", tween: [ "style", "${_back_end_card3}", "opacity", '1', { fromValue: '1'}], position: 250, duration: 0, easing: "easeInQuart" },
+            { id: "eid226", tween: [ "transform", "${_char}", "scaleY", '1', { fromValue: '0'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
+            { id: "eid1", tween: [ "transform", "${_Image3}", "scaleX", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
+            { id: "eid224", tween: [ "transform", "${_char}", "scaleX", '1', { fromValue: '0'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
+            { id: "eid230", tween: [ "style", "${_char}", "top", '-976px', { fromValue: '-141px'}], position: 4000, duration: 1000, easing: "easeOutQuad" },
+            { id: "eid15", tween: [ "style", "${_Text}", "opacity", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
+            { id: "eid225", tween: [ "style", "${_char}", "opacity", '1', { fromValue: '0.000000'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid184", tween: [ "style", "${_words3}", "opacity", '1', { fromValue: '0.000000'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid99", tween: [ "style", "${_Text3}", "font-size", '100px', { fromValue: '0px'}], position: 250, duration: 1000, easing: "easeOutQuad" },
             { id: "eid128", tween: [ "style", "${_Text3}", "font-size", '200px', { fromValue: '100px'}], position: 3000, duration: 500, easing: "easeOutQuad" },
-            { id: "eid87", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '0'}], position: 250, duration: 111, easing: "easeOutQuad" },
-            { id: "eid88", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 361, duration: 111, easing: "easeOutQuad" },
-            { id: "eid89", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 472, duration: 111, easing: "easeOutQuad" },
-            { id: "eid90", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 583, duration: 111, easing: "easeOutQuad" },
-            { id: "eid91", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 694, duration: 111, easing: "easeOutQuad" },
-            { id: "eid92", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 806, duration: 111, easing: "easeOutQuad" },
-            { id: "eid93", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 917, duration: 111, easing: "easeOutQuad" },
-            { id: "eid94", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 1028, duration: 111, easing: "easeOutQuad" },
-            { id: "eid95", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 1139, duration: 111, easing: "easeOutQuad" },
-            { id: "eid193", tween: [ "style", "${_words3}", "top", '-967px', { fromValue: '-193px'}], position: 4000, duration: 1000, easing: "easeOutQuad" },
+            { id: "eid193", tween: [ "style", "${_words3}", "top", '-967px', { fromValue: '-141px'}], position: 4000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid44", tween: [ "transform", "${_back_end_card3}", "scaleX", '1', { fromValue: '0'}], position: 250, duration: 111, easing: "easeOutQuad" },
             { id: "eid45", tween: [ "transform", "${_back_end_card3}", "scaleX", '-1', { fromValue: '1'}], position: 361, duration: 111, easing: "easeOutQuad" },
             { id: "eid46", tween: [ "transform", "${_back_end_card3}", "scaleX", '1', { fromValue: '-1'}], position: 472, duration: 111, easing: "easeOutQuad" },
@@ -238,17 +249,23 @@ var symbols = {
             { id: "eid51", tween: [ "transform", "${_back_end_card3}", "scaleX", '1', { fromValue: '-1'}], position: 917, duration: 111, easing: "easeOutQuad" },
             { id: "eid54", tween: [ "transform", "${_back_end_card3}", "scaleX", '-1', { fromValue: '1'}], position: 1028, duration: 111, easing: "easeOutQuad" },
             { id: "eid53", tween: [ "transform", "${_back_end_card3}", "scaleX", '1', { fromValue: '-1'}], position: 1139, duration: 111, easing: "easeOutQuad" },
-            { id: "eid1", tween: [ "transform", "${_Image3}", "scaleX", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
-            { id: "eid13", tween: [ "transform", "${_Text}", "scaleX", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
+            { id: "eid187", tween: [ "transform", "${_words3}", "scaleX", '1', { fromValue: '0'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid85", tween: [ "style", "${_Text3}", "opacity", '1', { fromValue: '1'}], position: 250, duration: 0, easing: "easeInQuart" },
             { id: "eid189", tween: [ "style", "${_Text3}", "opacity", '1', { fromValue: '1'}], position: 1250, duration: 0, easing: "easeOutQuad" },
             { id: "eid135", tween: [ "style", "${_Text3}", "opacity", '0', { fromValue: '1'}], position: 3000, duration: 500, easing: "easeOutQuad" },
             { id: "eid188", tween: [ "transform", "${_words3}", "scaleY", '1', { fromValue: '0'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
-            { id: "eid187", tween: [ "transform", "${_words3}", "scaleX", '1', { fromValue: '0'}], position: 3000, duration: 1000, easing: "easeOutQuad" },
-            { id: "eid60", tween: [ "style", "${_back_end_card3}", "top", '33px', { fromValue: '33px'}], position: 1250, duration: 0, easing: "easeInQuad" },
-            { id: "eid15", tween: [ "style", "${_Text}", "opacity", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
+            { id: "eid58", tween: [ "style", "${_back_end_card3}", "left", '-69px', { fromValue: '-69px'}], position: 1250, duration: 0, easing: "easeInQuad" },
+            { id: "eid13", tween: [ "transform", "${_Text}", "scaleX", '0', { fromValue: '1'}], position: 0, duration: 250, easing: "easeInQuad" },
             { id: "eid57", tween: [ "style", "${_back_end_card3}", "background-size", [100,100], { valueTemplate: '@@0@@% @@1@@%', fromValue: [0,0]}], position: 250, duration: 1000, easing: "easeInQuad" },
-            { id: "eid42", tween: [ "style", "${_back_end_card3}", "opacity", '1', { fromValue: '1'}], position: 250, duration: 0, easing: "easeInQuart" }         ]
+            { id: "eid87", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '0'}], position: 250, duration: 111, easing: "easeOutQuad" },
+            { id: "eid88", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 361, duration: 111, easing: "easeOutQuad" },
+            { id: "eid89", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 472, duration: 111, easing: "easeOutQuad" },
+            { id: "eid90", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 583, duration: 111, easing: "easeOutQuad" },
+            { id: "eid91", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 694, duration: 111, easing: "easeOutQuad" },
+            { id: "eid92", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 806, duration: 111, easing: "easeOutQuad" },
+            { id: "eid93", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 917, duration: 111, easing: "easeOutQuad" },
+            { id: "eid94", tween: [ "transform", "${_Text3}", "scaleX", '-1', { fromValue: '1'}], position: 1028, duration: 111, easing: "easeOutQuad" },
+            { id: "eid95", tween: [ "transform", "${_Text3}", "scaleX", '1', { fromValue: '-1'}], position: 1139, duration: 111, easing: "easeOutQuad" }         ]
       }
    }
 },
@@ -263,36 +280,36 @@ var symbols = {
    content: {
    dom: [
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1.00)','500','none','normal'],
       type: 'text',
+      rect: ['0px','0px','508px','53px','auto','auto'],
       id: 'Text4',
       text: '亲爱的前程老人：',
       align: 'center',
-      rect: ['0px','0px','508px','53px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1.00)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['96px','67px','280px','68px','auto','auto'],
       id: 'Text5',
       text: '您好！',
       align: 'center',
-      rect: ['96px','67px','280px','68px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['77px','144px','976px','216px','auto','auto'],
       id: 'Text8',
       text: '        值此愚人佳节来临之际，复旦大学前程协会全体成员向您送来最诚挚的问候。尽管对于前程而言，这并不是一个特别的日子——在曾经的岁月里，因为有您，愚人节我们每天都过。',
       align: 'left',
-      rect: ['77px','144px','976px','216px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['77px','388px','976px','204px','auto','auto'],
       id: 'Text9',
       text: '作为一名前程人，您曾以谆谆教诲告诉我们难得糊涂，您曾也身体力行教会我们吃亏是福，您更用坚毅执着为我们演示现代版愚公移山。感谢您为前程而糊涂而吃亏，感谢您对愚人精神的发扬！',
       align: 'center',
-      rect: ['77px','388px','976px','204px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    }],
    symbolInstances: [
    ]
@@ -303,6 +320,16 @@ var symbols = {
             ["style", "height", '592px'],
             ["style", "width", '1053px']
          ],
+         "${_Text5}": [
+            ["style", "left", '96px'],
+            ["style", "top", '67px']
+         ],
+         "${_Text9}": [
+            ["style", "height", '204px'],
+            ["style", "top", '388px'],
+            ["style", "left", '77px'],
+            ["style", "width", '976px']
+         ],
          "${_Text8}": [
             ["style", "top", '144px'],
             ["style", "text-align", 'left'],
@@ -310,21 +337,11 @@ var symbols = {
             ["style", "left", '77px'],
             ["style", "width", '976px']
          ],
-         "${_Text9}": [
-            ["style", "top", '388px'],
-            ["style", "height", '204px'],
-            ["style", "left", '77px'],
-            ["style", "width", '976px']
-         ],
-         "${_Text5}": [
-            ["style", "left", '96px'],
-            ["style", "top", '67px']
-         ],
          "${_Text4}": [
-            ["color", "color", 'rgba(0,0,0,1.00)'],
             ["style", "height", '53px'],
+            ["style", "top", '0px'],
             ["style", "left", '0px'],
-            ["style", "top", '0px']
+            ["color", "color", 'rgba(0,0,0,1.00)']
          ]
       }
    },
@@ -335,18 +352,18 @@ var symbols = {
          duration: 8000,
          autoPlay: false,
          timeline: [
-            { id: "eid146", tween: [ "style", "${_Text9}", "left", '1133px', { fromValue: '77px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
-            { id: "eid152", tween: [ "style", "${_Text9}", "left", '2173px', { fromValue: '1133px'}], position: 7000, duration: 1000, easing: "easeOutQuad" },
+            { id: "eid149", tween: [ "style", "${_Text4}", "top", '-4px', { fromValue: '0px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid147", tween: [ "style", "${_Text9}", "top", '384px', { fromValue: '388px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid148", tween: [ "style", "${_Text4}", "left", '1056px', { fromValue: '0px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid153", tween: [ "style", "${_Text4}", "left", '2096px', { fromValue: '1056px'}], position: 7000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid144", tween: [ "style", "${_Text5}", "left", '1152px', { fromValue: '96px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid151", tween: [ "style", "${_Text5}", "left", '2192px', { fromValue: '1152px'}], position: 7000, duration: 1000, easing: "easeOutQuad" },
-            { id: "eid145", tween: [ "style", "${_Text5}", "top", '63px', { fromValue: '67px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
+            { id: "eid146", tween: [ "style", "${_Text9}", "left", '1133px', { fromValue: '77px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
+            { id: "eid152", tween: [ "style", "${_Text9}", "left", '2173px', { fromValue: '1133px'}], position: 7000, duration: 1000, easing: "easeOutQuad" },
             { id: "eid143", tween: [ "style", "${_Text8}", "top", '140px', { fromValue: '144px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid142", tween: [ "style", "${_Text8}", "left", '1133px', { fromValue: '77px'}], position: 2500, duration: 750, easing: "easeOutQuad" },
             { id: "eid150", tween: [ "style", "${_Text8}", "left", '2173px', { fromValue: '1133px'}], position: 7000, duration: 1000, easing: "easeOutQuad" },
-            { id: "eid149", tween: [ "style", "${_Text4}", "top", '-4px', { fromValue: '0px'}], position: 2500, duration: 750, easing: "easeOutQuad" }         ]
+            { id: "eid145", tween: [ "style", "${_Text5}", "top", '63px', { fromValue: '67px'}], position: 2500, duration: 750, easing: "easeOutQuad" }         ]
       }
    }
 },
@@ -361,44 +378,44 @@ var symbols = {
    content: {
    dom: [
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['8px','121px','930px','132px','auto','auto'],
       id: 'Text12',
       text: '也许我们曾为您唱过几支送别歌谣，纵使它常常跑音、跑调和跑感情；',
       align: 'center',
-      rect: ['8px','121px','930px','132px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['0px','0px','930px','101px','auto','auto'],
       id: 'Text10',
       text: '也许前程曾给您一双翅膀助您飞翔，无论它是微辣、中辣或是变态辣；',
       align: 'center',
-      rect: ['0px','0px','930px','101px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['20px','250px','894px','101px','auto','auto'],
       id: 'Text13',
       text: '但我们一直深深地牵挂着您——',
       align: 'center',
-      rect: ['20px','250px','894px','101px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['0px','330px','914px','101px','auto','auto'],
       id: 'Text14',
       text: '不是挂念着那一对翅，而是记着那一段情；',
       align: 'center',
-      rect: ['0px','330px','914px','101px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['2px','420px','930px','101px','auto','auto'],
       id: 'Text15',
       text: '不是害怕丢那一次脸，而是念着那一个人。',
       align: 'center',
-      rect: ['2px','420px','930px','101px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    }],
    symbolInstances: [
    ]
@@ -414,9 +431,9 @@ var symbols = {
             ["style", "left", '8px'],
             ["style", "width", '930px']
          ],
-         "${_Text10}": [
-            ["style", "left", '0px'],
-            ["style", "top", '0px']
+         "${_Text13}": [
+            ["style", "left", '20px'],
+            ["style", "top", '250px']
          ],
          "${symbolSelector}": [
             ["style", "height", '521px'],
@@ -426,9 +443,9 @@ var symbols = {
             ["style", "left", '0px'],
             ["style", "top", '330px']
          ],
-         "${_Text13}": [
-            ["style", "left", '20px'],
-            ["style", "top", '250px']
+         "${_Text10}": [
+            ["style", "left", '0px'],
+            ["style", "top", '0px']
          ]
       }
    },
@@ -468,20 +485,20 @@ var symbols = {
    content: {
    dom: [
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['0px','0px','938px','304px','auto','auto'],
       id: 'Text16',
       text: '也许您今天难免会遇上一堆恶意骚扰、故意发错的邮件，但这张海报不在其列。因为这是一张只有前程人才能看见的海报，是愚人节里唯一不愚人的节目；它不似那皇帝的新衣，但却充满着家的暖意。',
       align: 'left',
-      rect: ['0px','0px','938px','304px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    },
    {
-      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal'],
       type: 'text',
+      rect: ['0px','304px','921px','304px','auto','auto'],
       id: 'Text17',
       text: '再次感激那些“愚您同乐”的时光。我们愿真诚地祝福您——在未来的日子里，智也罢愚也罢，愿您把快乐当作第一要素，成为一个幸福的“傻瓜”；也愿您有时间常回家看看，让我们继续与您同愚同乐！',
       align: 'left',
-      rect: ['0px','304px','921px','304px','auto','auto']
+      font: ['Arial, Helvetica, sans-serif',44,'rgba(0,0,0,1)','500','none','normal']
    }],
    symbolInstances: [
    ]
@@ -495,8 +512,8 @@ var symbols = {
          ],
          "${_Text16}": [
             ["style", "top", '0px'],
-            ["style", "text-align", 'left'],
             ["style", "left", '0px'],
+            ["style", "text-align", 'left'],
             ["style", "width", '938px']
          ],
          "${symbolSelector}": [
